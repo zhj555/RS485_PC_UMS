@@ -1,0 +1,52 @@
+E:\研发部\上位机\刷固件\CanBusIAP\Library\bin\Debug\Library.dll
+E:\研发部\上位机\刷固件\CanBusIAP\Library\bin\Debug\Library.pdb
+E:\研发部\上位机\刷固件\CanBusIAP\Library\obj\Debug\Library.csproj.CoreCompileInputs.cache
+E:\研发部\上位机\刷固件\CanBusIAP\Library\obj\Debug\Library.dll
+E:\研发部\上位机\刷固件\CanBusIAP\Library\obj\Debug\Library.pdb
+E:\研发部\上位机\刷固件\CanBusIAP\Library\obj\Debug\Library.csprojAssemblyReference.cache
+E:\研发部\上位机\刷固件\CAN\ZLG-CAN\Library\bin\Debug\Library.dll
+E:\研发部\上位机\刷固件\CAN\ZLG-CAN\Library\bin\Debug\Library.pdb
+E:\研发部\上位机\刷固件\CAN\ZLG-CAN\Library\obj\Debug\Library.csprojAssemblyReference.cache
+E:\研发部\上位机\刷固件\CAN\ZLG-CAN\Library\obj\Debug\Library.csproj.CoreCompileInputs.cache
+E:\研发部\上位机\刷固件\CAN\ZLG-CAN\Library\obj\Debug\Library.dll
+E:\研发部\上位机\刷固件\CAN\ZLG-CAN\Library\obj\Debug\Library.pdb
+D:\西安诚合\上位机\CAN\ZLG-CAN\Library\bin\Debug\Library.dll
+D:\西安诚合\上位机\CAN\ZLG-CAN\Library\bin\Debug\Library.pdb
+D:\西安诚合\上位机\CAN\ZLG-CAN\Library\obj\Debug\Library.csproj.CoreCompileInputs.cache
+D:\西安诚合\上位机\CAN\ZLG-CAN\Library\obj\Debug\Library.dll
+D:\西安诚合\上位机\CAN\ZLG-CAN\Library\obj\Debug\Library.pdb
+E:\工作\上位机\刷固件\CAN\ZLG-CAN\Library\bin\Debug\Library.dll
+E:\工作\上位机\刷固件\CAN\ZLG-CAN\Library\bin\Debug\Library.pdb
+E:\工作\上位机\刷固件\CAN\ZLG-CAN\Library\obj\Debug\Library.csproj.CoreCompileInputs.cache
+E:\工作\上位机\刷固件\CAN\ZLG-CAN\Library\obj\Debug\Library.dll
+E:\工作\上位机\刷固件\CAN\ZLG-CAN\Library\obj\Debug\Library.pdb
+E:\工作\上位机\刷固件\CAN\ZLG-CAN\Library\obj\Debug\Library.csprojAssemblyReference.cache
+C:\Users\wmz\Desktop\刷固件\CAN\ZLG-CAN\Library\bin\Debug\Library.dll
+C:\Users\wmz\Desktop\刷固件\CAN\ZLG-CAN\Library\bin\Debug\Library.pdb
+C:\Users\wmz\Desktop\刷固件\CAN\ZLG-CAN\Library\obj\Debug\Library.csprojAssemblyReference.cache
+C:\Users\wmz\Desktop\刷固件\CAN\ZLG-CAN\Library\obj\Debug\Library.csproj.CoreCompileInputs.cache
+C:\Users\wmz\Desktop\刷固件\CAN\ZLG-CAN\Library\obj\Debug\Library.dll
+C:\Users\wmz\Desktop\刷固件\CAN\ZLG-CAN\Library\obj\Debug\Library.pdb
+E:\工作目录\项目\语音播报器\APP\Library\bin\Debug\Library.dll
+E:\工作目录\项目\语音播报器\APP\Library\bin\Debug\Library.pdb
+E:\工作目录\项目\语音播报器\APP\Library\obj\Debug\Library.csproj.CoreCompileInputs.cache
+E:\工作目录\项目\语音播报器\APP\Library\obj\Debug\Library.dll
+E:\工作目录\项目\语音播报器\APP\Library\obj\Debug\Library.pdb
+E:\工作目录\项目\语音播报器\APP\Library\obj\Debug\Library.csprojAssemblyReference.cache
+E:\淘宝资料素材\stm32升级固件资料\stm32f103\串口升级\上位机 - 副本\APP\Library\bin\Debug\Library.dll
+E:\淘宝资料素材\stm32升级固件资料\stm32f103\串口升级\上位机 - 副本\APP\Library\bin\Debug\Library.pdb
+E:\淘宝资料素材\stm32升级固件资料\stm32f103\串口升级\上位机 - 副本\APP\Library\obj\Debug\Library.csprojAssemblyReference.cache
+E:\淘宝资料素材\stm32升级固件资料\stm32f103\串口升级\上位机 - 副本\APP\Library\obj\Debug\Library.csproj.CoreCompileInputs.cache
+E:\淘宝资料素材\stm32升级固件资料\stm32f103\串口升级\上位机 - 副本\APP\Library\obj\Debug\Library.dll
+E:\淘宝资料素材\stm32升级固件资料\stm32f103\串口升级\上位机 - 副本\APP\Library\obj\Debug\Library.pdb
+E:\工作目录\产品开发\IAP固件升级\上位机\APP\Library\bin\Debug\Library.dll
+E:\工作目录\产品开发\IAP固件升级\上位机\APP\Library\bin\Debug\Library.pdb
+E:\工作目录\产品开发\IAP固件升级\上位机\APP\Library\obj\Debug\Library.csproj.CoreCompileInputs.cache
+E:\工作目录\产品开发\IAP固件升级\上位机\APP\Library\obj\Debug\Library.dll
+E:\工作目录\产品开发\IAP固件升级\上位机\APP\Library\obj\Debug\Library.pdb
+D:\上位机开发\UMS\Library\bin\Debug\Library.dll
+D:\上位机开发\UMS\Library\bin\Debug\Library.pdb
+D:\上位机开发\UMS\Library\obj\Debug\Library.csproj.AssemblyReference.cache
+D:\上位机开发\UMS\Library\obj\Debug\Library.csproj.CoreCompileInputs.cache
+D:\上位机开发\UMS\Library\obj\Debug\Library.dll
+D:\上位机开发\UMS\Library\obj\Debug\Library.pdb

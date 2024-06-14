@@ -1,0 +1,14 @@
+D:\code\CSharpCode\串口通讯应用\串口发送数据\MainSender\MainSender\bin\Release\MainSender.exe.config
+D:\code\CSharpCode\串口通讯应用\串口发送数据\MainSender\MainSender\bin\Release\MainSender.exe
+D:\code\CSharpCode\串口通讯应用\串口发送数据\MainSender\MainSender\bin\Release\MainSender.pdb
+D:\code\CSharpCode\串口通讯应用\串口发送数据\MainSender\MainSender\obj\Release\MainSender.csprojAssemblyReference.cache
+D:\code\CSharpCode\串口通讯应用\串口发送数据\MainSender\MainSender\obj\Release\MainSender.About.resources
+D:\code\CSharpCode\串口通讯应用\串口发送数据\MainSender\MainSender\obj\Release\MainSender.SerialDebug.resources
+D:\code\CSharpCode\串口通讯应用\串口发送数据\MainSender\MainSender\obj\Release\MainSender.Properties.Resources.resources
+D:\code\CSharpCode\串口通讯应用\串口发送数据\MainSender\MainSender\obj\Release\MainSender.csproj.GenerateResource.cache
+D:\code\CSharpCode\串口通讯应用\串口发送数据\MainSender\MainSender\obj\Release\MainSender.exe
+D:\code\CSharpCode\串口通讯应用\串口发送数据\MainSender\MainSender\obj\Release\MainSender.pdb
+D:\code\CSharpCode\串口通讯应用\串口发送数据\MainSender\MainSender\bin\Release\MainSender.exe.manifest
+D:\code\CSharpCode\串口通讯应用\串口发送数据\MainSender\MainSender\bin\Release\MainSender.application
+D:\code\CSharpCode\串口通讯应用\串口发送数据\MainSender\MainSender\obj\Release\MainSender.exe.manifest
+D:\code\CSharpCode\串口通讯应用\串口发送数据\MainSender\MainSender\obj\Release\MainSender.application

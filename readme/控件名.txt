@@ -1,0 +1,20 @@
+combobox：
+	comboBox_Serial   串口号
+	comboBox_BandRate 波特率
+	comboBox_Check    校验位
+	comboBox_Data     数据位
+	comboBox_Stop     停止位
+	comboBox_SendData 发送的数据类型
+	
+	
+button：
+	button_OK      打开串口
+	button_Cancel  关闭串口
+	button_ClcSendData   清除发送数据
+	button_ClcReceData   清除接收数据
+	
+	
+richTextBox:
+	richTextBox_Send     发送数据显示区
+	richTextBox_Receive  接收数据显示区
+	
