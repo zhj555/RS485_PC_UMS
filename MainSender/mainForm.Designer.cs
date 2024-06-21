@@ -53,7 +53,7 @@
             this.skinButton1.DownBaseColor = System.Drawing.Color.DodgerBlue;
             this.skinButton1.Font = new System.Drawing.Font("微软雅黑", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.skinButton1.ForeColor = System.Drawing.Color.Black;
-            this.skinButton1.Location = new System.Drawing.Point(3, 651);
+            this.skinButton1.Location = new System.Drawing.Point(3, 733);
             this.skinButton1.MouseBack = null;
             this.skinButton1.MouseBaseColor = System.Drawing.Color.LightSeaGreen;
             this.skinButton1.Name = "skinButton1";
@@ -76,11 +76,11 @@
             this.skinPanel1.Controls.Add(this.skinButton1);
             this.skinPanel1.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.skinPanel1.DownBack = null;
-            this.skinPanel1.Location = new System.Drawing.Point(11, 33);
+            this.skinPanel1.Location = new System.Drawing.Point(11, 30);
             this.skinPanel1.MouseBack = null;
             this.skinPanel1.Name = "skinPanel1";
             this.skinPanel1.NormlBack = null;
-            this.skinPanel1.Size = new System.Drawing.Size(164, 705);
+            this.skinPanel1.Size = new System.Drawing.Size(164, 794);
             this.skinPanel1.TabIndex = 1;
             // 
             // skinButton6
@@ -97,7 +97,7 @@
             this.skinButton6.Font = new System.Drawing.Font("微软雅黑", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.skinButton6.ForeColor = System.Drawing.Color.Black;
             this.skinButton6.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.skinButton6.Location = new System.Drawing.Point(3, 525);
+            this.skinButton6.Location = new System.Drawing.Point(3, 535);
             this.skinButton6.MouseBack = null;
             this.skinButton6.MouseBaseColor = System.Drawing.Color.Transparent;
             this.skinButton6.Name = "skinButton6";
@@ -219,18 +219,18 @@
             this.skinPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.skinPanel2.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.skinPanel2.DownBack = null;
-            this.skinPanel2.Location = new System.Drawing.Point(174, 33);
+            this.skinPanel2.Location = new System.Drawing.Point(174, 30);
             this.skinPanel2.MouseBack = null;
             this.skinPanel2.Name = "skinPanel2";
             this.skinPanel2.NormlBack = null;
-            this.skinPanel2.Size = new System.Drawing.Size(1026, 705);
+            this.skinPanel2.Size = new System.Drawing.Size(1098, 791);
             this.skinPanel2.TabIndex = 2;
             // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1211, 749);
+            this.ClientSize = new System.Drawing.Size(1274, 828);
             this.Controls.Add(this.skinPanel2);
             this.Controls.Add(this.skinPanel1);
             this.Name = "mainForm";

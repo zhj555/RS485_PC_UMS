@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.Design;
 using System.Drawing;
 using System.IO;   // 导入输入输出文件框
 using System.IO.Ports;   // 串口模块
@@ -7,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using CCWin;
+using Library;
 using Modbus.Device;
 
 namespace MainSender
@@ -54,7 +56,7 @@ namespace MainSender
             //定时器初始化
             modbusTimer = new System.Windows.Forms.Timer();
 
-            modbusTimer.Interval = 500;
+            modbusTimer.Interval = 50;
             modbusTimer.Tick += new System.EventHandler(timerSend_Tick);
             modbusTimer.Enabled = false;
 
@@ -79,13 +81,21 @@ namespace MainSender
             
             if(value)
             {
-                modbusTimer.Enabled = true;
-                modbusTimer.Start();
+                if (modbusTimer != null)
+                {
+                    modbusTimer.Enabled = true;
+                    modbusTimer.Start();
+                }
             }
+               
             else
             {
-                modbusTimer.Enabled = false;
-                modbusTimer.Stop();
+                if (modbusTimer != null)
+                {
+                    modbusTimer.Enabled = false;
+                    modbusTimer.Stop();
+                }
+                    
             }
         }
 
@@ -105,7 +115,7 @@ namespace MainSender
             // 初始化停止位
             comboBox_Stop.Text = comboBox_Stop.Items[0].ToString();
 
-            modusRtu.master = ModbusSerialMaster.CreateRtu(serialPort1);
+            //modusRtu.master = ModbusSerialMaster.CreateRtu(serialPort1);
             //实例化Modbus RTU主站
             /*            modusRtu.master = ModbusSerialMaster.CreateRtu(serialPort1);
 
@@ -172,14 +182,14 @@ namespace MainSender
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("数据接收失败！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("串口数据读取失败！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
                 ringBuffer.WriteBuffer(data);
             }
             catch(Exception)
             {
-                MessageBox.Show("数据接收失败！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("数据接收中异常！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -606,15 +616,74 @@ namespace MainSender
             data[2] = 0x00;  //寄存器基地址
             data[3] = 0x00;
             data[4] = 0x00;  //长度
-            data[5] = 0x1E;
-            data[6] = 0x70;  //校验码
-            data[7] = 0x02;
+            data[5] = 0x1C;
+
+            byte[] crcValue = CRC.CRCCalc(data, 0, 6);
+
+            data[6] = crcValue[0];  //校验码
+            data[7] = crcValue[1];
+
+            SendData(data);    // 发送数据
+        }
+
+        void Modbus_ReadHold()
+        {
+            byte[] data = new byte[8];
+            data[0] = 0x01;
+            data[1] = 0x03;
+            data[2] = 0x00;  //寄存器基地址
+            data[3] = 0x00;
+            data[4] = 0x00;  //长度
+            data[5] = 0x26;
+
+            byte[] crcValue = CRC.CRCCalc(data, 0, 6);
+
+            data[6] = crcValue[0];  //校验码
+            data[7] = crcValue[1];
+
+            SendData(data);    // 发送数据
+        }
+
+        void Mobus_ReadCoil()
+        {
+            byte[] data = new byte[8];
+            data[0] = 0x01;
+            data[1] = 0x01;
+            data[2] = 0x00;  //寄存器基地址
+            data[3] = 0x00;
+            data[4] = 0x00;  //线圈数量
+            data[5] = 0x08;
+
+            byte[] crcValue = CRC.CRCCalc(data, 0, 6);
+
+            data[6] = crcValue[0];  //校验码
+            data[7] = crcValue[1];
+
+            SendData(data);    // 发送数据
+        }
+
+        void Mobus_ReadInputState()
+        {
+            byte[] data = new byte[8];
+            data[0] = 0x01;
+            data[1] = 0x02;
+            data[2] = 0x00;  //寄存器基地址
+            data[3] = 0x00;
+            data[4] = 0x00;  //输入状态数量
+            data[5] = 0x26;
+
+            byte[] crcValue = CRC.CRCCalc(data, 0, 6);
+
+            data[6] = crcValue[0];  //校验码
+            data[7] = crcValue[1];
 
             SendData(data);    // 发送数据
         }
 
         #endregion
 
+
+        public static volatile int SendCommand = 0;
         /// <summary>
         /// 定时发送数据
         /// </summary>
@@ -623,32 +692,59 @@ namespace MainSender
         private void timerSend_Tick(object sender, EventArgs e)
         {
 
-            /*if (checkBox_SendData.Checked)
+            //定时发送
+            switch (SendCommand)
             {
-                string datastr = richTextBox_Send.Text;
-                if (datastr == "")
-                {
-                    return;
-                }
-                timerSend.Interval = int.Parse(textBox_selectTime.Text);  // 将字符串转化为整型数字
-                byte[] data = System.Text.Encoding.Default.GetBytes(datastr);   // 字符串转化为字节数组
-                SendData(data);
-                sendCount += datastr.Length;
-                toolStripStatus_sendstatus.Text = "发送数据：" + sendCount.ToString();
+                case 0:
+                    {
+                        if (mainForm.sendValid[0] == true)
+                        {
+                            Mobus_ReadInput();
+                        }
 
-                // 控件设置
-                button_SendData.Enabled = false;
+                        SendCommand = 1;
+                        break;
+                    }
+                case 1:
+                    {
+                        if (mainForm.sendValid[0] == true)
+                        {
+                            Mobus_ReadCoil();
+                        }
+
+                        SendCommand = 2;
+                        break;
+                    }
+
+                case 2:
+                    {
+                        if (mainForm.sendValid[1] == true && ControlForm.holdRegistersQuery == true)
+                        {
+                            ControlForm.holdRegistersQuery = false;
+                            Modbus_ReadHold();
+                        }
+
+                        SendCommand = 3;
+                        break;
+                    }
+                case 3:
+                    {
+                        if (mainForm.sendValid[0] == true)
+                        {
+                            Mobus_ReadInputState();
+                        }
+
+                        SendCommand = 0;
+                        break;
+                    }
+
+                default:
+                    SendCommand = 0;
+                    break;
 
             }
-            else
-            {
-                button_SendData.Enabled = true;
-            }*/
 
-            //定时发送
-            //thread.Start();
-            Mobus_ReadInput();
-
+            Thread.Sleep(150); //等待接收
 
         }
 

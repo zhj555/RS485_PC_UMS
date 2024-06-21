@@ -38,11 +38,12 @@ namespace MainSender
         //正在刷固件
         bool Running = false;
 
-        int StartTimeOut = 50;//握手信号超时时间 ms
+        //int StartTimeOut = 50;//握手信号超时时间 ms
+        int StartTimeOut = 500;//握手信号超时时间 ms
         //int StartTimeOut = 5000;//握手信号超时时间 ms
         int StartRepeat = 100;//握手信号重发次数 
-        //int timeout = 2000;//刷固件超时时间 ms
-        int timeout = 5000;//刷固件超时时间 ms
+        int timeout = 2000;//刷固件超时时间 ms
+        //int timeout = 5000;//刷固件超时时间 ms
 
 
         public Library.Richbox richbox;                              //固件下载消息框
@@ -205,7 +206,8 @@ namespace MainSender
 
         private void skinButton3_Click(object sender, EventArgs e)
         {
-
+            //清空
+            richbox.Clear();
         }
 
         private void LoadFile()
@@ -331,7 +333,7 @@ namespace MainSender
         {
             try
             {
-
+                SerialDebug.ringBuffer.Clear();     //升级前清空缓存
                 Thread.Sleep(100);  //等待modbus线程的结束
                 //SerialDebug.subscriptionSerialRecEvent(true); //开启接收事件
                 
@@ -348,7 +350,7 @@ namespace MainSender
                         {
                             this.Invoke(new MethodInvoker(delegate
                             {
-                                richbox.Msg(Color.Green, "{0} 第{1}次请求刷固...", DateTime.Now.ToString("HH:mm:ss fff"), i + 1);
+                                richbox.Msg(Color.Green, "{0} 第{1}次请求刷固...", DateTime.Now.ToString("HH:mm:ss"), i + 1);
                             }));
                         }
                         catch
@@ -392,8 +394,8 @@ namespace MainSender
                         //Thread.Sleep(100);
 
 
-
-                        string str = string.Empty;
+                        //zhj-屏蔽
+                        /*string str = string.Empty;
                         for (int j = 0; j < Data.Length; j++)
                         {
                             str += String.Format("{0:X2}", Data[j]) + " ";
@@ -401,7 +403,7 @@ namespace MainSender
                         this.Invoke(new MethodInvoker(delegate
                         {
                             richbox.Msg(str);
-                        }));
+                        }));*/
 
                         //等待响应
                         while (Running)
@@ -460,6 +462,10 @@ namespace MainSender
                         timeCount = 0;
                     }
                 AA:
+                    Thread.Sleep(20);       //zhj
+                    Array.Clear(ResponseData, 0, ResponseData.Length);
+                    SerialDebug.ringBuffer.Clear();
+
                     //更新启动时间
                     StartTime = time.NowTimeMS();
                     //2.开始刷固
@@ -470,7 +476,7 @@ namespace MainSender
                             break;
                         this.Invoke(new MethodInvoker(delegate
                         {
-                            richbox.Msg(Color.Blue, "{0} 已发送第{1}包,共{2}包", DateTime.Now.ToString("HH:mm:ss fff"), i + 1, PackageNum);
+                            richbox.Msg(Color.Blue, "{0} 已发送第{1}包,共{2}包", DateTime.Now.ToString("HH:mm:ss"), i + 1, PackageNum);
                         }));
                         send_data_zheng(i);
                         //等待响应
@@ -483,7 +489,7 @@ namespace MainSender
                             {
                                 this.Invoke(new MethodInvoker(delegate
                                 {
-                                    richbox.Msg(Color.Red, "{0} 等待超时，重发！", DateTime.Now.ToString("HH:mm:ss fff"));
+                                    richbox.Msg(Color.Red, "{0} 等待超时，重发！", DateTime.Now.ToString("HH:mm:ss"));
                                     timeCount = 0;
                                     send_data_zheng(i);
                                     //Running = false;
@@ -615,7 +621,7 @@ namespace MainSender
                                                     richbox.Msg(Color.Green, "{0} Flash写入成功！", DateTime.Now.ToString("HH:mm:ss fff"));
                                                     richbox.Msg(Color.Green, "完成！");
                                                     Running = false;
-                                                    skinButton2.Text = "下载";
+                                                    skinButton2.Text = "升级";
                                                 }));
                                                 goto stop;
                                             // break;
@@ -675,11 +681,18 @@ namespace MainSender
 
                 this.Invoke(new Action(() =>
                 {
-                    SerialDebug.modbusTimer.Enabled = true;
-                    SerialDebug.modbusTimer.Start();
-
-                    SysForm1.SysRecTimer.Enabled = true;
-                    SysForm1.SysRecTimer.Start();
+                    if(SerialDebug.modbusTimer != null)
+                    {
+                        SerialDebug.modbusTimer.Enabled = true;
+                        SerialDebug.modbusTimer.Start();
+                    }
+                    
+                    if(SysForm1.SysRecTimer != null)
+                    {
+                        SysForm1.SysRecTimer.Enabled = true;
+                        SysForm1.SysRecTimer.Start();
+                    }
+                    
                 }));
             }
             catch(Exception ex)

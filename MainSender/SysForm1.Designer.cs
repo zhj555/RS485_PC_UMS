@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -38,8 +37,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.skinDataGridView1 = new CCWin.SkinControl.SkinDataGridView();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.skinDataGridView2 = new CCWin.SkinControl.SkinDataGridView();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.skinLabel1 = new CCWin.SkinControl.SkinLabel();
             ((System.ComponentModel.ISupportInitialize)(this.skinDataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.skinDataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -48,6 +48,7 @@
             // 
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(246)))), ((int)(((byte)(253)))));
             this.skinDataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.skinDataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.skinDataGridView1.BackgroundColor = System.Drawing.Color.LightSkyBlue;
             this.skinDataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.skinDataGridView1.ColumnFont = null;
@@ -85,22 +86,18 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             this.skinDataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.skinDataGridView1.RowTemplate.Height = 23;
-            this.skinDataGridView1.Size = new System.Drawing.Size(449, 645);
+            this.skinDataGridView1.Size = new System.Drawing.Size(518, 764);
             this.skinDataGridView1.SkinGridColor = System.Drawing.Color.LightSkyBlue;
             this.skinDataGridView1.TabIndex = 0;
             this.skinDataGridView1.TitleBack = null;
             this.skinDataGridView1.TitleBackColorBegin = System.Drawing.Color.White;
             this.skinDataGridView1.TitleBackColorEnd = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(196)))), ((int)(((byte)(242)))));
             // 
-            // timer1
-            // 
-            this.timer1.Interval = 10;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // skinDataGridView2
             // 
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(246)))), ((int)(((byte)(253)))));
             this.skinDataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.skinDataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.skinDataGridView2.BackgroundColor = System.Drawing.Color.LightSkyBlue;
             this.skinDataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.skinDataGridView2.ColumnFont = null;
@@ -127,7 +124,7 @@
             this.skinDataGridView2.GridColor = System.Drawing.Color.LightSkyBlue;
             this.skinDataGridView2.HeadFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.skinDataGridView2.HeadSelectForeColor = System.Drawing.SystemColors.HighlightText;
-            this.skinDataGridView2.Location = new System.Drawing.Point(469, 3);
+            this.skinDataGridView2.Location = new System.Drawing.Point(527, 3);
             this.skinDataGridView2.Name = "skinDataGridView2";
             this.skinDataGridView2.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.skinDataGridView2.RowHeadersWidth = 51;
@@ -138,19 +135,41 @@
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             this.skinDataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.skinDataGridView2.RowTemplate.Height = 23;
-            this.skinDataGridView2.Size = new System.Drawing.Size(465, 645);
+            this.skinDataGridView2.Size = new System.Drawing.Size(541, 461);
             this.skinDataGridView2.SkinGridColor = System.Drawing.Color.LightSkyBlue;
             this.skinDataGridView2.TabIndex = 1;
             this.skinDataGridView2.TitleBack = null;
             this.skinDataGridView2.TitleBackColorBegin = System.Drawing.Color.White;
             this.skinDataGridView2.TitleBackColorEnd = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(196)))), ((int)(((byte)(242)))));
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(527, 482);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(541, 285);
+            this.richTextBox1.TabIndex = 2;
+            this.richTextBox1.Text = "";
+            // 
+            // skinLabel1
+            // 
+            this.skinLabel1.AutoSize = true;
+            this.skinLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel1.BorderColor = System.Drawing.Color.White;
+            this.skinLabel1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel1.Location = new System.Drawing.Point(527, 459);
+            this.skinLabel1.Name = "skinLabel1";
+            this.skinLabel1.Size = new System.Drawing.Size(84, 20);
+            this.skinLabel1.TabIndex = 3;
+            this.skinLabel1.Text = "告警状态栏";
+            // 
             // SysForm1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SkyBlue;
-            this.ClientSize = new System.Drawing.Size(1004, 699);
+            this.ClientSize = new System.Drawing.Size(1080, 779);
+            this.Controls.Add(this.skinLabel1);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.skinDataGridView2);
             this.Controls.Add(this.skinDataGridView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -163,13 +182,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.skinDataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.skinDataGridView2)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private CCWin.SkinControl.SkinDataGridView skinDataGridView1;
-        private System.Windows.Forms.Timer timer1;
         private CCWin.SkinControl.SkinDataGridView skinDataGridView2;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private CCWin.SkinControl.SkinLabel skinLabel1;
     }
 }

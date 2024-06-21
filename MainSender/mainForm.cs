@@ -17,6 +17,9 @@ namespace MainSender
         static public Form[] selectFrm = null;
 
 
+        //[0] - 输入寄存器 [1]-保持寄存器 [2]- 线圈状态 [3]-输入状态
+        public static bool[] sendValid = new bool[4]; //查询帧发送有效性
+
         public mainForm()
         {
             InitializeComponent();
@@ -49,7 +52,7 @@ namespace MainSender
 
                 this.skinPanel2.Controls.Add(selectFrm[0]);
             
-          
+            
         }
 
 
@@ -89,6 +92,7 @@ namespace MainSender
 
         private void skinButton2_Click(object sender, EventArgs e)
         {
+            sendValid[0] = true;
 
             if (curSelect != 1)
             {
@@ -149,6 +153,8 @@ namespace MainSender
 
         private void skinButton6_Click(object sender, EventArgs e)
         {
+            sendValid[1] = true;
+
             if (curSelect != 5)
             {
                 skinPanel2.Controls.Clear();    //移除所有控件

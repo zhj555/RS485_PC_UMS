@@ -16,7 +16,10 @@ namespace MainSender
     public partial class ControlForm : Form
     {
 
-        public DataTable bms_thresholdValue = new DataTable();    //定义一个DataTable作为数据源
+        public static DataTable bms_thresholdValue = new DataTable();    //定义一个DataTable作为数据源
+
+        public static bool holdRegistersQuery = false;
+
         public ControlForm()
         {
             InitializeComponent();
@@ -61,41 +64,47 @@ namespace MainSender
             bms_thresholdValue.Rows.Add("模组OTP2级时间", 0, "V");
             bms_thresholdValue.Rows.Add("模组1级过温阈值", 0, "°C");
             bms_thresholdValue.Rows.Add("模组2级过温阈值", 0, "°C");
+            bms_thresholdValue.Rows.Add("模组1级欠温阈值", 0, "°C");
+            bms_thresholdValue.Rows.Add("绝缘检测电压阈值", 0, "V");
+            bms_thresholdValue.Rows.Add("绝缘1级故障阈值", 0, "KR");
+            bms_thresholdValue.Rows.Add("绝缘2级故障阈值", 0, "KR");
+            bms_thresholdValue.Rows.Add("单体OVP1级时间", 0, " ");
+            bms_thresholdValue.Rows.Add("单体OVP2级时间", 0, " ");
+            bms_thresholdValue.Rows.Add("最高允许充电总电压", 0, "V");
+            bms_thresholdValue.Rows.Add("最低允许充电总电压", 0, "V");
+            bms_thresholdValue.Rows.Add("最高允许充电电流", 0, "A");
+            bms_thresholdValue.Rows.Add("最高允许放电电流", 0, "A");
+            bms_thresholdValue.Rows.Add("绝缘检测等压误差", 0, " ");
+            bms_thresholdValue.Rows.Add("跳转指令", 0, " ");
+            bms_thresholdValue.Rows.Add("系统时钟年月", 0, " ");
+            bms_thresholdValue.Rows.Add("系统时钟日时", 0, " ");
+            bms_thresholdValue.Rows.Add("系统时钟分秒", 0, " ");
 
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            //定时轮询
-            byte[] rbytes = new byte[200];
-            int readBytes = SerialDebug.holdBuffer.GetDataCount();
 
-            if (readBytes > 0)
-            {
-                SerialDebug.holdBuffer.ReadBuffer(rbytes, 0, readBytes);
-
-                ushort[] data = tool.toShortArray(rbytes);
-
-                SerialDebug.holdBuffer.Clear(readBytes);
-
-                convertBmsData(data);
-
-            }
-
-        }
-
-        public void convertBmsData(ushort[] data)
+        public static void convertBmsData(ushort[] data,byte len)
         {
 
 
-            bms_thresholdValue.Rows[0]["数值"] = data[0];
+/*            bms_thresholdValue.Rows[0]["数值"] = data[0];
             bms_thresholdValue.Rows[1]["数值"] = data[1];
             bms_thresholdValue.Rows[2]["数值"] = data[2];
             bms_thresholdValue.Rows[3]["数值"] = data[3];
             bms_thresholdValue.Rows[4]["数值"] = data[4];
             bms_thresholdValue.Rows[5]["数值"] = data[5];
             bms_thresholdValue.Rows[6]["数值"] = data[6];
-            bms_thresholdValue.Rows[7]["数值"] = data[7];
+            bms_thresholdValue.Rows[7]["数值"] = data[7];*/
+
+            for(int i = 0; i < len; i++)
+            {
+                bms_thresholdValue.Rows[i]["数值"] = data[i];
+            }
+        }
+
+        private void skinButton1_Click(object sender, EventArgs e)
+        {
+            holdRegistersQuery = true;
         }
     }
 }

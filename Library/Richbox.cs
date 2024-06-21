@@ -35,5 +35,10 @@ namespace Library
             //滚动到控件光标处
             richTextBox.ScrollToCaret();
         }
+
+        public void Clear()
+        {
+            richTextBox.Clear();
+        }
     }
 }
