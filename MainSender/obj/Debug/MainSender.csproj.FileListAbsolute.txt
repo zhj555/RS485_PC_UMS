@@ -71,3 +71,4 @@ D:\上位机开发\UMS\MainSender\obj\Debug\MainSender.ControlForm.resources
 D:\上位机开发\UMS\MainSender\obj\Debug\MainSender.UpdateForm.resources
 D:\上位机开发\UMS\MainSender\bin\Debug\Library.dll
 D:\上位机开发\UMS\MainSender\bin\Debug\Library.pdb
+D:\上位机开发\UMS\MainSender\bin\Debug\LED.dll

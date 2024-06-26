@@ -16,16 +16,20 @@ using Library;
 namespace MainSender
 {
     public delegate void HandTimer(bool value);    // zhj-声明委托
+
+    public delegate void controlFromHandle();
+
     public partial class SysForm1 : Form //CCSkinMain
     {
+        public static controlFromHandle  conformhandle = null;
 
         static HandTimer handTimer1 = new HandTimer(ControlSysRecTimer);          //定义委托
 
         public DataTable bms_data = new DataTable();    //定义一个DataTable作为数据源
         public DataTable bms_status = new DataTable();  //定义一个DataTable作为数据源
 
-        public BmsDataType.BmsData realBmsData = new BmsDataType.BmsData();
-        public BmsDataType.BmsStatus realBmsStatus = new BmsDataType.BmsStatus();
+        public static BmsDataType.BmsData realBmsData = new BmsDataType.BmsData();
+        public static BmsDataType.BmsStatus realBmsStatus = new BmsDataType.BmsStatus();
 
         
         public static System.Windows.Forms.Timer SysRecTimer = null;
@@ -144,6 +148,15 @@ namespace MainSender
             //将数据源绑定到控件上
             skinDataGridView1.DataSource = bms_data;
             skinDataGridView2.DataSource = bms_status;
+
+            //设置各列的相对宽度
+            skinDataGridView1.Columns[0].FillWeight = 50;  //第一列的相对宽度为50%
+            skinDataGridView1.Columns[1].FillWeight = 25;  //第二列的相对宽度为25%
+            skinDataGridView1.Columns[2].FillWeight = 25;  //第三列的相对宽度为25%
+
+            skinDataGridView2.Columns[0].FillWeight = 50;  //第一列的相对宽度为50%
+            skinDataGridView2.Columns[1].FillWeight = 25;  //第二列的相对宽度为25%
+            skinDataGridView2.Columns[2].FillWeight = 25;  //第三列的相对宽度为25%
 
 
             /*数据初始化*/
@@ -267,7 +280,26 @@ namespace MainSender
             bms_data.Rows[26]["数值"] = realBmsData.reserve3;
             bms_data.Rows[27]["数值"] = realBmsData.reserve4;
 
-
+            if(realBmsData.sysState == 0)
+            {
+                label1.Text = "初始化";
+            }
+            else if(realBmsData.sysState == 1)
+            {
+                label1.Text = "正常运行";
+            }
+            else if(realBmsData.sysState == 2)
+            {
+                label1.Text = "一级告警";
+            }
+            else if(realBmsData.sysState == 3)
+            {
+                label1.Text = "二级告警";
+            }
+            else if(realBmsData.sysState == 4)
+            {
+                label1.Text = "维护";
+            }
             /*            for (int i = 0;i< len; i++)
                         {
                             bms_data.Rows[i]["数值"] = data[i];
@@ -357,6 +389,24 @@ namespace MainSender
                 bms_status.Rows[16]["状态"] = "闭合";
             }
 
+
+            if (realBmsStatus.DO1_Status == 1) //KM2输出状态
+            {
+                led1.GridentColor = Color.LightGreen;
+            }
+            else
+            {
+                led1.GridentColor = Color.LightGray;
+            }
+
+            if (realBmsStatus.DI4_Status == 1) //KM1回馈状态
+            {
+                led2.GridentColor = Color.LightGreen;
+            }
+            else
+            {
+                led2.GridentColor = Color.LightGray;
+            }
 
         }
 
@@ -583,6 +633,8 @@ namespace MainSender
                 bms_status.Rows[7]["状态"] = "闭合";
             }
 
+            
+
 
             /*告警状态*/
             realBmsStatus.TotalOverVol1_AlarmStatus1 = (byte)((data[1] & 0x04) >> 2);
@@ -655,6 +707,7 @@ namespace MainSender
                 if ((crc16[0] != rbytes[readBytes-2]) || (crc16[1] != rbytes[readBytes - 1]) )
                 {
                     SerialDebug.ringBuffer.Clear(readBytes);
+              
                     return;
                 }
 
@@ -665,8 +718,13 @@ namespace MainSender
                     case 0x01:   //读取线圈状态
 
                         SerialDebug.ringBuffer.Clear(readBytes);
-
+                     
                         convertBmsOutStatus(sysdata, len);
+
+                        if((conformhandle != null) && (ControlForm.pcControl == false))
+                        {
+                            conformhandle();
+                        }
                         
                         break;
 
@@ -684,6 +742,7 @@ namespace MainSender
                         ushort[] data1 = tool.toShortArray(sysdata);
 
                         SerialDebug.ringBuffer.Clear(readBytes);
+                        
 
                         convertBmsData(data1, (byte)(len/2));
                         break;
@@ -694,13 +753,28 @@ namespace MainSender
                         ushort[] data2 = tool.toShortArray(sysdata);
 
                         SerialDebug.ringBuffer.Clear(readBytes);
+                      
 
                         ControlForm.convertBmsData(data2, (byte)(len / 2));
+
+                        MessageBox.Show("读取成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         break;
 
+                    case 0x06: //写保持寄存器-响应
+                        SerialDebug.ringBuffer.Clear(readBytes);
+                        
+                        MessageBox.Show("阈值写入成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+
+                    case 0x05: //写单个线圈-响应
+                        SerialDebug.ringBuffer.Clear(readBytes);
+
+                        MessageBox.Show("线圈写入成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
 
                     default:
                         SerialDebug.ringBuffer.Clear(readBytes);
+                      
                         break;
 
                 }

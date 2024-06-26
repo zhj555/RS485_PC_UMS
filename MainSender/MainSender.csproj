@@ -64,6 +64,9 @@
     <Reference Include="CSkin">
       <HintPath>..\..\界面库\CSkin 16.1.14.3\CSkin 4.0\CSkin.dll</HintPath>
     </Reference>
+    <Reference Include="LED">
+      <HintPath>..\packages\LED.dll</HintPath>
+    </Reference>
     <Reference Include="NModbus4, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\NModbus4.2.1.0\lib\net40\NModbus4.dll</HintPath>
     </Reference>
@@ -144,6 +147,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="SysForm1.resx">
       <DependentUpon>SysForm1.cs</DependentUpon>
@@ -184,6 +188,12 @@
       <Project>{b18fc1c3-f0fe-464d-9dc8-c86b19e0a662}</Project>
       <Name>Library</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\开关-关.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\开关-开.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

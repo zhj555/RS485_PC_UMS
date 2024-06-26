@@ -684,6 +684,7 @@ namespace MainSender
 
 
         public static volatile int SendCommand = 0;
+        public static bool immediatelySendFlag = false;
         /// <summary>
         /// 定时发送数据
         /// </summary>
@@ -691,60 +692,63 @@ namespace MainSender
         /// <param name="e"></param>
         private void timerSend_Tick(object sender, EventArgs e)
         {
-
-            //定时发送
-            switch (SendCommand)
+            if(immediatelySendFlag == false)
             {
-                case 0:
-                    {
-                        if (mainForm.sendValid[0] == true)
+                //定时发送
+                switch (SendCommand)
+                {
+                    case 0:
                         {
-                            Mobus_ReadInput();
+                            if (mainForm.sendValid[0] == true)
+                            {
+                                Mobus_ReadInput();
+                            }
+
+                            SendCommand = 1;
+                            break;
+                        }
+                    case 1:
+                        {
+                            if (mainForm.sendValid[0] == true)
+                            {
+                                Mobus_ReadCoil();
+                            }
+
+                            SendCommand = 2;
+                            break;
                         }
 
-                        SendCommand = 1;
-                        break;
-                    }
-                case 1:
-                    {
-                        if (mainForm.sendValid[0] == true)
+                    case 2:
                         {
-                            Mobus_ReadCoil();
+                            if (mainForm.sendValid[1] == true && ControlForm.holdRegistersQuery == true)
+                            {
+                                ControlForm.holdRegistersQuery = false;
+                                Modbus_ReadHold();
+                            }
+
+                            SendCommand = 3;
+                            break;
+                        }
+                    case 3:
+                        {
+                            if (mainForm.sendValid[0] == true)
+                            {
+                                Mobus_ReadInputState();
+                            }
+
+                            SendCommand = 0;
+                            break;
                         }
 
-                        SendCommand = 2;
-                        break;
-                    }
-
-                case 2:
-                    {
-                        if (mainForm.sendValid[1] == true && ControlForm.holdRegistersQuery == true)
-                        {
-                            ControlForm.holdRegistersQuery = false;
-                            Modbus_ReadHold();
-                        }
-
-                        SendCommand = 3;
-                        break;
-                    }
-                case 3:
-                    {
-                        if (mainForm.sendValid[0] == true)
-                        {
-                            Mobus_ReadInputState();
-                        }
-
+                    default:
                         SendCommand = 0;
                         break;
-                    }
 
-                default:
-                    SendCommand = 0;
-                    break;
+                }
 
+                Thread.Sleep(150); //等待接收
             }
-
-            Thread.Sleep(150); //等待接收
+            
 
         }
 

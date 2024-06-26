@@ -54,6 +54,18 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="LED.dll" size="7168">
+      <assemblyIdentity name="LED" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>L0RFUviU43TTL/fmANKNNWKYlFqdGIPjnQS4Y6Q7vP8=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Library.dll" size="9216">
       <assemblyIdentity name="Library" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -66,14 +78,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MainSender.exe" size="167368">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MainSender.exe" size="179656">
       <assemblyIdentity name="MainSender" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>bXHq5qb+IC7XkQaVbnpqnrrNFqqs2wVlDUOO+NkTxYA=</dsig:DigestValue>
+        <dsig:DigestValue>JlfRDtDrlQeQDK7NXGTYycvNpZcXqakC+NHtmD9pSow=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

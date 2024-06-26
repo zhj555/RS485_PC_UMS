@@ -10,8 +10,8 @@ namespace MainSender
     {
         public byte[] Buffer { get; set; } // 存放内存的数组
         public int DataCount { get; set; } // 写入数据大小
-        public int DataStart { get; set; } // 数据起始索引
-        public int DataEnd { get; set; }   // 数据结束索引
+        public int DataStart { get; set; } // 数据起始索引  zhj-读指针
+        public int DataEnd { get; set; }   // 数据结束索引  zhj-写指针
         public RingBuffer(int bufferSize)
         {
             DataCount = 0; DataStart = 0; DataEnd = 0;
@@ -47,6 +47,10 @@ namespace MainSender
         public void Clear()
         {
             DataCount = 0;
+
+            //zhj
+            DataStart = 0; DataEnd = 0;
+            Array.Clear(Buffer, 0, Buffer.Length);
         }
 
         public void Clear(int count) // 清空指定大小的数据
@@ -56,6 +60,7 @@ namespace MainSender
                 DataCount = 0;
                 DataStart = 0;
                 DataEnd = 0;
+                Array.Clear(Buffer, 0, Buffer.Length);
             }
             else
             {
@@ -79,7 +84,7 @@ namespace MainSender
                 if (DataEnd + count < Buffer.Length)            // 数据没到结尾
                 {
                     Array.Copy(buffer, offset, Buffer, DataEnd, count);
-                    DataEnd += count;
+                    DataEnd += count;                                       //zhj-写偏移指针
                     DataCount += count;
                 }
                 else           //  数据结束索引超出结尾 循环到开始
@@ -108,7 +113,7 @@ namespace MainSender
         public void ReadBuffer(byte[] targetBytes, Int32 offset, Int32 count)
         {
             if (count > DataCount) throw new Exception("环形缓冲区异常，读取长度大于数据长度");
-            Int32 tempDataStart = DataStart;
+            Int32 tempDataStart = DataStart;        //zhj-读取指针
             if (DataStart + count < Buffer.Length)
             {
                 Array.Copy(Buffer, DataStart, targetBytes, offset, count);

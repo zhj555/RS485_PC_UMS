@@ -53,7 +53,7 @@
             this.skinButton1.DownBaseColor = System.Drawing.Color.DodgerBlue;
             this.skinButton1.Font = new System.Drawing.Font("微软雅黑", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.skinButton1.ForeColor = System.Drawing.Color.Black;
-            this.skinButton1.Location = new System.Drawing.Point(3, 733);
+            this.skinButton1.Location = new System.Drawing.Point(13, 725);
             this.skinButton1.MouseBack = null;
             this.skinButton1.MouseBaseColor = System.Drawing.Color.LightSeaGreen;
             this.skinButton1.Name = "skinButton1";
@@ -97,7 +97,7 @@
             this.skinButton6.Font = new System.Drawing.Font("微软雅黑", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.skinButton6.ForeColor = System.Drawing.Color.Black;
             this.skinButton6.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.skinButton6.Location = new System.Drawing.Point(3, 535);
+            this.skinButton6.Location = new System.Drawing.Point(13, 527);
             this.skinButton6.MouseBack = null;
             this.skinButton6.MouseBaseColor = System.Drawing.Color.Transparent;
             this.skinButton6.Name = "skinButton6";
@@ -123,7 +123,7 @@
             this.skinButton5.Font = new System.Drawing.Font("微软雅黑", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.skinButton5.ForeColor = System.Drawing.Color.Black;
             this.skinButton5.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.skinButton5.Location = new System.Drawing.Point(3, 412);
+            this.skinButton5.Location = new System.Drawing.Point(13, 404);
             this.skinButton5.MouseBack = null;
             this.skinButton5.MouseBaseColor = System.Drawing.Color.Transparent;
             this.skinButton5.Name = "skinButton5";
@@ -149,7 +149,7 @@
             this.skinButton4.Font = new System.Drawing.Font("微软雅黑", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.skinButton4.ForeColor = System.Drawing.Color.Black;
             this.skinButton4.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.skinButton4.Location = new System.Drawing.Point(3, 289);
+            this.skinButton4.Location = new System.Drawing.Point(13, 281);
             this.skinButton4.MouseBack = null;
             this.skinButton4.MouseBaseColor = System.Drawing.Color.Transparent;
             this.skinButton4.Name = "skinButton4";
@@ -175,7 +175,7 @@
             this.skinButton3.Font = new System.Drawing.Font("微软雅黑", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.skinButton3.ForeColor = System.Drawing.Color.Black;
             this.skinButton3.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.skinButton3.Location = new System.Drawing.Point(3, 161);
+            this.skinButton3.Location = new System.Drawing.Point(13, 153);
             this.skinButton3.MouseBack = null;
             this.skinButton3.MouseBaseColor = System.Drawing.Color.Transparent;
             this.skinButton3.Name = "skinButton3";
@@ -201,7 +201,7 @@
             this.skinButton2.Font = new System.Drawing.Font("微软雅黑", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.skinButton2.ForeColor = System.Drawing.Color.Black;
             this.skinButton2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.skinButton2.Location = new System.Drawing.Point(3, 33);
+            this.skinButton2.Location = new System.Drawing.Point(13, 25);
             this.skinButton2.MouseBack = null;
             this.skinButton2.MouseBaseColor = System.Drawing.Color.Transparent;
             this.skinButton2.Name = "skinButton2";
@@ -233,6 +233,8 @@
             this.ClientSize = new System.Drawing.Size(1274, 828);
             this.Controls.Add(this.skinPanel2);
             this.Controls.Add(this.skinPanel1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "mainForm";
             this.Text = "mainForm";
             this.Resize += new System.EventHandler(this.mainForm_Resize);
